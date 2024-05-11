@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="530.0" prefWidth="827.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fede.nicole.domandetolc.Controllers.QuizController">
+   <children>
+      <BorderPane layoutX="-65.0" layoutY="-60.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <VBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="275.0" prefWidth="600.0" spacing="14.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="20.0" />
+               </BorderPane.margin>
+               <children>
+                  <RadioButton fx:id="radioA" mnemonicParsing="false" prefHeight="87.0" prefWidth="580.0" text="RadioButton">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="Radios" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="radioB" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="580.0" text="RadioButton" toggleGroup="$Radios" />
+                  <RadioButton fx:id="radioC" layoutX="10.0" layoutY="32.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="580.0" text="RadioButton" toggleGroup="$Radios" />
+                  <RadioButton fx:id="radioD" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="580.0" text="RadioButton" toggleGroup="$Radios" />
+                  <RadioButton fx:id="radioE" layoutX="10.0" layoutY="77.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="580.0" text="RadioButton" toggleGroup="$Radios" />
+               </children>
+            </VBox>
+         </center>
+         <top>
+            <Label fx:id="domanda" prefHeight="62.0" prefWidth="600.0" text="Domanda : " BorderPane.alignment="CENTER_LEFT" />
+         </top>
+         <bottom>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="41.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnInvio" mnemonicParsing="false" onAction="#onInvia" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: ffc107; -fx-border-color: #ffc107; -fx-border-radius: 25;" text="Invia" />
+                  <Button fx:id="btnPrecedente" mnemonicParsing="false" onAction="#onPrecedente" text="Precedente" />
+                  <Button fx:id="btnSuccessivo" mnemonicParsing="false" onAction="#onSuccessivo" text="Successiva" />
+               </children>
+            </HBox>
+         </bottom></BorderPane>
+   </children>
+</AnchorPane>
