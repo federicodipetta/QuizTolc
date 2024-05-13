@@ -49,11 +49,14 @@ public class FormController {
     }
 
     public void invia(ActionEvent actionEvent) throws IOException, URISyntaxException {
-        if(selectFiles.getValue().equals("Biologia")){
-            controllerQuiz.aggiungiPath(Paths.get(getClass().getResource("/com/fede/nicole/domandetolc/Domande/Biologia.txt").toURI()).toString());
-        }else if(selectFiles.getValue().equals("Chimica")){
-            controllerQuiz.aggiungiPath(Paths.get(getClass().getResource("/com/fede/nicole/domandetolc/Domande/Chimica.txt").toURI()).toString());
+        if(selectFiles.getValue() != null){
+            if(selectFiles.getValue().equals("Biologia")){
+                controllerQuiz.aggiungiPath(Paths.get(getClass().getResource("/com/fede/nicole/domandetolc/Domande/Biologia.txt").toURI()).toString());
+            }else if(selectFiles.getValue().equals("Chimica")){
+                controllerQuiz.aggiungiPath(Paths.get(getClass().getResource("/com/fede/nicole/domandetolc/Domande/Chimica.txt").toURI()).toString());
+            }
         }
+
 
         controllerQuiz.aggiungiLimite(Integer.parseInt(inputInizio.getText()), Integer.parseInt(inputFine.getText()));
         controllerQuiz.vaiAQuiz();
