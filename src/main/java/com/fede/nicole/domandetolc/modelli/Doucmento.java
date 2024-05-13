@@ -19,6 +19,10 @@ public class Doucmento implements SerializzabileJson {
         return domande;
     }
 
+    public void tagliaDomande(int inizio, int fine) {
+        domande = domande.stream().filter(x-> x.getNumero() >= inizio && x.getNumero() <= fine).toList();
+    }
+
     @Override
     public JSONObject toJson() {
         JSONArray array =  new JSONArray(domande.stream().map(ModelloDomanda::toJson).toList());

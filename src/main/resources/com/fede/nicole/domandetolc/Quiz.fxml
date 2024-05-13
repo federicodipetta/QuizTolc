@@ -13,20 +13,20 @@
                   <Insets left="20.0" />
                </BorderPane.margin>
                <children>
-                  <RadioButton fx:id="radioA" mnemonicParsing="false" prefHeight="87.0" prefWidth="580.0" text="RadioButton">
+                  <RadioButton fx:id="radioA" mnemonicParsing="false" wrapText="true">
                      <toggleGroup>
                         <ToggleGroup fx:id="Radios" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="radioB" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="69.0" prefWidth="580.0" text="RadioButton" toggleGroup="$Radios" />
-                  <RadioButton fx:id="radioC" layoutX="10.0" layoutY="32.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="580.0" text="RadioButton" toggleGroup="$Radios" />
-                  <RadioButton fx:id="radioD" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="580.0" text="RadioButton" toggleGroup="$Radios" />
-                  <RadioButton fx:id="radioE" layoutX="10.0" layoutY="77.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="580.0" text="RadioButton" toggleGroup="$Radios" />
+                  <RadioButton fx:id="radioB" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" toggleGroup="$Radios" wrapText="true" />
+                  <RadioButton fx:id="radioC" layoutX="10.0" layoutY="32.0" mnemonicParsing="false" toggleGroup="$Radios" wrapText="true" />
+                  <RadioButton fx:id="radioD" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" toggleGroup="$Radios" wrapText="true" />
+                  <RadioButton fx:id="radioE" layoutX="10.0" layoutY="77.0" mnemonicParsing="false" toggleGroup="$Radios" wrapText="true" />
                </children>
             </VBox>
          </center>
          <top>
-            <Label fx:id="domanda" prefHeight="62.0" prefWidth="600.0" text="Domanda : " BorderPane.alignment="CENTER_LEFT" />
+            <Label fx:id="domanda" text="Domanda : " BorderPane.alignment="CENTER_LEFT" />
          </top>
          <bottom>
             <HBox alignment="BOTTOM_RIGHT" prefHeight="41.0" prefWidth="600.0" BorderPane.alignment="CENTER">

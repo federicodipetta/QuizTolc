@@ -10,10 +10,10 @@ public enum StatoDomanda {
         return this == RISPOSTA_CORRETTAMENTE;
     }
 
-    public int toInt() {
+    public double toDouble() {
         return switch (this) {
             case RISPOSTA_CORRETTAMENTE -> 1;
-            case RISPOSTA_SBAGLIATA -> -1;
+            case RISPOSTA_SBAGLIATA -> -0.25;
             case NON_RISPOSTA -> 0;
         };
     }

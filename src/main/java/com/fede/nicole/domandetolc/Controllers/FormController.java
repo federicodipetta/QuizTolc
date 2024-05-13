@@ -8,8 +8,10 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.file.Paths;
 
 
 public class FormController {
@@ -38,14 +40,19 @@ public class FormController {
     public void onSelezionaPath() throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Seleziona il file delle domande");
-        controllerQuiz.aggiungiPath(fileChooser.showOpenDialog(bottonePath.getScene().getWindow()).getAbsolutePath());
+        File file = fileChooser.showOpenDialog(bottonePath.getScene().getWindow());
+        if(file != null){
+            pathDomanda.setText(file.getAbsolutePath());
+            controllerQuiz.aggiungiPath(file.getAbsolutePath());
+        }
+
     }
 
     public void invia(ActionEvent actionEvent) throws IOException, URISyntaxException {
         if(selectFiles.getValue().equals("Biologia")){
-            controllerQuiz.aggiungiPath(getClass().getResource("/com/fede/nicole/domandetolc/Domande/Biologia.txt").toString().substring(6));
+            controllerQuiz.aggiungiPath(Paths.get(getClass().getResource("/com/fede/nicole/domandetolc/Domande/Biologia.txt").toURI()).toString());
         }else if(selectFiles.getValue().equals("Chimica")){
-            controllerQuiz.aggiungiPath(getClass().getResource("/com/fede/nicole/domandetolc/Domande/Chimica.txt").toString().substring(6));
+            controllerQuiz.aggiungiPath(Paths.get(getClass().getResource("/com/fede/nicole/domandetolc/Domande/Chimica.txt").toURI()).toString());
         }
 
         controllerQuiz.aggiungiLimite(Integer.parseInt(inputInizio.getText()), Integer.parseInt(inputFine.getText()));

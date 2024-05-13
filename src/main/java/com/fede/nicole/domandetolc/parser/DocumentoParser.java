@@ -11,7 +11,7 @@ public class DocumentoParser {
 
 
     public List<ModelloDomanda> parse(String path) throws FileNotFoundException {
-        path = Paths.get(path).toAbsolutePath().toString();
+        path = Paths.get(path).toString();
         Scanner scanner = new Scanner(new File(path));
         List<ModelloDomanda> domande = new LinkedList<>();
         scanner.useDelimiter("Domanda N°");
@@ -37,16 +37,23 @@ public class DocumentoParser {
 
     private String pulisciStringa(String s){
         StringBuilder builder = new StringBuilder();
-        for (int i = 0; i<s.length();i++){
-            if(i<4 && !acapoCarage(s.charAt(i)))
-                builder.append(s.charAt(i));
-            if(i>s.length() - 4 && !acapoCarage(s.charAt(i)))
-                builder.append(s.charAt(i));
-            if(i>=4 && i<= s.length()-4)
-                builder.append(s.charAt(i));
+        int i = 0;
+        int limite = 0;
+        //rimuovo i primi /n e /r
+        while(i<s.length() && acapoCarage(s.charAt(i))){
+            i++;
         }
+        //rimuovo quelli finali
+        while(limite<s.length() && acapoCarage(s.charAt(s.length()-limite-1))){
+            limite++;
+        }
+        for(;i<s.length()-limite;i++){
+            builder.append(s.charAt(i));
+        }
+
         return new String(builder);
     }
+
 
     private boolean acapoCarage(char c) {
         return c == '\n' || c=='\r';

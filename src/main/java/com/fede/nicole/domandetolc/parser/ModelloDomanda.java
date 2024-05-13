@@ -118,7 +118,7 @@ public final class ModelloDomanda implements SerializzabileJson {
     }
 
     public int getNumero() {
-        return numero;
+        return numeroDomanda;
     }
 
     public void MischiaRisposte() {

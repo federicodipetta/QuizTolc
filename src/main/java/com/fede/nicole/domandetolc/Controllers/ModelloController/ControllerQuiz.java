@@ -48,11 +48,11 @@ public class ControllerQuiz {
 
      public void vaiAQuiz() throws IOException {
          DocumentoParser documentoParser = new DocumentoParser();
-         Doucmento doc = new Doucmento(documentoParser.parse(paths.get(0)).subList(inizo,fine), Path.of(paths.get(0)).getFileName().toString());
+         Doucmento doc = new Doucmento(documentoParser.parse(paths.get(0)), Path.of(paths.get(0)).getFileName().toString());
+         doc.tagliaDomande(inizo, fine);
          documenti.add(doc);
          this.domande = getDomande(doc);
          MischiaDomandeRisposte();
-         this.domande = this.domande.subList(0,10);
          FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Quiz.fxml"));
          Scene scene = new Scene(fxmlLoader.load(), 320, 240);
          QuizController c = fxmlLoader.getController();
@@ -84,15 +84,15 @@ public class ControllerQuiz {
      }
 
      public void invia() throws IOException {
-         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource ("FineQuiz.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-            FineQuizController c = fxmlLoader.getController();
-            c.controllerQuiz = this;
-            c.init(this.domande.stream().mapToInt(x->x.stato().toInt()).sum());
-            stage.setTitle("Fine Quiz");
-            stage.setScene(scene);
-            stage.show();
-        }
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource ("FineQuiz.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        FineQuizController c = fxmlLoader.getController();
+        c.controllerQuiz = this;
+        c.init(this.domande.stream().mapToDouble(x->x.stato().toDouble()).sum());
+        stage.setTitle("Fine Quiz");
+        stage.setScene(scene);
+        stage.show();
+    }
 
 
      public ModelloDomanda daiDomanda(){
@@ -116,9 +116,7 @@ public class ControllerQuiz {
 
 
      private List<ModelloDomanda> getDomande(Doucmento doc){
-        return doc.getDomande().stream()
-                .filter(domanda -> domanda.getNumero() >= inizo && domanda.getNumero() <= fine)
-                .toList();
+        return doc.getDomande();
      }
 
      private void MischiaDomandeRisposte(){
@@ -135,5 +133,18 @@ public class ControllerQuiz {
             domande.get(domandaAttuale).lascia();
         else
             domande.get(domandaAttuale).ripsondi(rispostaSelezionata);
+    }
+
+
+    public void vaiARevisione() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Quiz.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        QuizController c = fxmlLoader.getController();
+        c.controllerQuiz = this;
+        c.revisione = true;
+        c.init();
+        stage.setTitle("Quiz");
+        stage.setScene(scene);
+        stage.show();
     }
 }
